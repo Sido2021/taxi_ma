@@ -1,35 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'services/Auth.dart';
+import 'package:taxi_ma/screens/Splash.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Taxi"),
-          backgroundColor: Colors.amber,
-        ),
-        body: Center(
-          child: Text(
-            "Hiba l9arda",
-            style: TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-              color: Colors.brown
-            ),
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: (){},
-          child: Text("+"),
-          backgroundColor: Colors.amber,
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: App(),
     );
+  }
+}
+
+class App extends StatefulWidget {
+  @override
+  _App createState() => _App();
+}
+
+class _App extends State<App> {
+  @override
+  Widget build(BuildContext context) {
+    return Splash();
   }
 }
