@@ -5,7 +5,6 @@ import 'package:taxi_ma/services/Auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:taxi_ma/models/User.dart' as u;
 import 'Utilities/Dialog.dart';
-import 'SignUp.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,17 +17,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: SignUp(),
     );
   }
 }
 
-class LoginPage extends StatefulWidget {
+class SignUp extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpState extends State<SignUp> {
   Auth auth ;
   List<TextEditingController> textEditingControllers = <TextEditingController>[TextEditingController(),TextEditingController()];
 
@@ -37,27 +36,60 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Login Page"),
+        title: Text("Inscription"),
         backgroundColor: Colors.amberAccent,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 60.0),
+              padding: const EdgeInsets.only(top: 40.0 , bottom: 15.0),
               child: Center(
-                child: Container(
-                    width: 200,
-                    height: 150,
-                    /*decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(50.0)),*/
-                    child: Image.asset('asset/images/taxi.png')),
+                child: CircleAvatar(
+                  backgroundImage: AssetImage("asset/images/ic_profile.jpg"),
+                  radius: 50,
+                ),
               ),
             ),
             Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
+              child: TextField(
+                controller: textEditingControllers[0],
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'First Name',
+                    hintText: 'First Name'),
+              ),
+            ),
+            Padding(
+              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
+              padding: const EdgeInsets.only(
+                  left: 15.0, right: 15.0, top: 15, bottom: 0),
+              child: TextField(
+                controller: textEditingControllers[0],
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Last Name',
+                    hintText: 'Last Name'),
+              ),
+            ),
+            Padding(
+              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
+              padding: const EdgeInsets.only(
+                  left: 15.0, right: 15.0, top: 15, bottom: 0),
+              child: TextField(
+                controller: textEditingControllers[0],
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Phone',
+                    hintText: '+212 606 06 06 06'),
+              ),
+            ),
+            Padding(
+              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
+              padding: const EdgeInsets.only(
+                  left: 15.0, right: 15.0, top: 15, bottom: 0),
               child: TextField(
                 controller: textEditingControllers[0],
                 decoration: InputDecoration(
@@ -79,13 +111,17 @@ class _LoginPageState extends State<LoginPage> {
                     hintText: '**********'),
               ),
             ),
-            FlatButton(
-              onPressed: (){
-                //TODO FORGOT PASSWORD SCREEN GOES HERE
-              },
-              child: Text(
-                'Forgot Password',
-                style: TextStyle(color: Colors.amberAccent, fontSize: 15),
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 15.0, right: 15.0, top: 15, bottom: 15),
+              //padding: EdgeInsets.symmetric(horizontal: 15),
+              child: TextField(
+                controller: textEditingControllers[1],
+                obscureText: true,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Comfirm Password',
+                    hintText: '**********'),
               ),
             ),
             Container(
@@ -109,21 +145,9 @@ class _LoginPageState extends State<LoginPage> {
                   }
                 },
                 child: Text(
-                  'Login',
+                  'Create Account',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 130,
-            ),
-            FlatButton(
-              onPressed: (){
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => SignUp()));
-              },
-              child: Text(
-                'New User ? Create Account',
               ),
             ),
           ],

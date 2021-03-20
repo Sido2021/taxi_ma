@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'services/Auth.dart';
 import 'package:taxi_ma/screens/Splash.dart';
 
 void main() async {
