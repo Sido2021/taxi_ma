@@ -32,6 +32,27 @@ class _LoginPageState extends State<LoginPage> {
   Auth auth ;
   List<TextEditingController> textEditingControllers = <TextEditingController>[TextEditingController(),TextEditingController()];
 
+
+  _LoginPageState(){
+    super.initState();
+    loginAutomatically();
+  }
+
+  void loginAutomatically() async{
+    showProgressDialog(context);
+    u.User newUser = u.User.forSignIn(email:"ayoub@gmail.com",password:"azerty@123" );
+    auth = new Auth(user:newUser);
+    UserCredential user = await auth.signIn();
+    Navigator.of(dialogContext).pop();
+    if(user != null){
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => MainPage()));
+    }
+    else {
+      print("Failed !");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

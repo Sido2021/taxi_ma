@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taxi_ma/screens/home/OffrePage.dart';
-import 'OffrePage.dart';
+import 'ReservationPage.dart';
 import 'HistoryPage.dart';
 import 'MapPage.dart';
 
@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   List<Widget> _widgetOptions = <Widget>[
-    OffrePage(),
+    ReservationPage(),
     MapPage(),
     HistoryPage(),
   ];
@@ -35,11 +35,7 @@ class _HomePageState extends State<HomePage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.article_sharp),
-            label: 'Offre',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.map),
-            label: 'Map',
+            label: 'Reservation ',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.history),
