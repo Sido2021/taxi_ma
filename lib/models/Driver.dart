@@ -7,15 +7,17 @@ class Driver{
   String date_of_birth ;
   String phone_number ;
   String email;
+  String type ;
   GeoPoint position ;
 
-  Driver({this.full_name,this.gender,this.date_of_birth,this.phone_number,this.email,this.position});
+  Driver({this.full_name,this.gender,this.date_of_birth,this.phone_number,this.email,this.position,this.type});
   Driver.fromJson(Map<String, dynamic> json)
       : full_name = json['full_name'],
         gender = json['gender'],
         email = json['email'],
         phone_number = json['phone_number'],
         date_of_birth = json['date_of_birth'],
+        type = json['type'],
         position = json['position'];
 
   Map<String, dynamic> toJson() => {
@@ -24,6 +26,7 @@ class Driver{
     'phone_number' : phone_number,
     'gender' : gender,
     'date_of_birth' : date_of_birth,
+    'type' : type,
     'position' : position
   };
 }

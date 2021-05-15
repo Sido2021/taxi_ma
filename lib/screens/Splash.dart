@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:taxi_ma/screens/home/HomePage.dart';
 import 'MainPage.dart';
 import 'LoginPage.dart';
 class Splash extends StatefulWidget {
@@ -15,7 +16,7 @@ class _Splash extends State<Splash> {
         .listen((User user) {
       if (user == null) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => LoginPage()));
+            context, MaterialPageRoute(builder: (_) => MainPage()));
       } else {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => MainPage()));

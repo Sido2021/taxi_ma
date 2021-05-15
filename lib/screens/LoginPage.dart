@@ -40,6 +40,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void loginAutomatically() async{
     showProgressDialog(context);
+    print("hiiiiiiiiiiiiiiiiiiii 888 ");
     u.User newUser = u.User.forSignIn(email:"ayoub@gmail.com",password:"azerty@123" );
     auth = new Auth(user:newUser);
     UserCredential user = await auth.signIn();
